@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap"></i>
+        <strong>AIU</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-lg-between" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/students/new}">
+                    Add Student Page
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/students}">
+                    Students Page
+                </a>
+            </li>
+        </ul>
+        <div class="text-white">
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" class="btn btn-danger">Logut</a>
+            </li>
+        </div>
+
+
+    </div>
+</nav>
+
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto col col-lg-6">
+            <h1 class="text-center" style=" font-family: Impact">Update Student</h1>
+            <div class="card-body">
+                <form th:action="@{/students/{id}(id=${student.id})}" th:object="${student}" method="post">
+                    <div class="form-group">
+
+                        <label>Student First Name</label>
+                        <input type="text"
+                               id="firstName"
+                               name="firstName"
+                               th:field="*{firstName}"
+                               class="form-control"
+                               placeholder="Enter Student First Name"
+                               title="The first name must contain only letters with the first capital letter (2 and more)"
+                               pattern="^([A-Z]{1}[a-z]{1,20})$"
+                        />
+                        <br/>
+
+                        <label>Student Last Name</label>
+                        <input type="text"
+                               id="lastName"
+                               name="lastName"
+                               th:field="*{lastName}"
+                               class="form-control"
+                               placeholder="Enter Student Last Name"
+                               title="The last name must contain only letters with the first capital letter (2 and more)"
+                               pattern="^([A-Z]{1}[a-z]{1,20})$"
+                        />
+                        <br/>
+
+                        <label>Student Email</label>
+                        <input type="text"
+                               id="email"
+                               name="email"
+                               th:field="*{email}"
+                               class="form-control"
+                               placeholder="Enter Student Email"
+                               pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"
+                               title="Email must be in the correct format"
+                        />
+                        <br/>
+
+                        <label>Student OOP Mark</label>
+                        <input type="text"
+                               id="OOP"
+                               name="OOP"
+                               th:field="*{OOP}"
+                               class="form-control"
+                               placeholder="Enter Student OOP Mark"
+                               pattern="^([1-9]|10)$"
+                               title="Mark must contain only 1-10 numbers"
+                        />
+                        <br/>
+
+                        <label>Student CPA Mark</label>
+                        <input type="text"
+                               id="CPA"
+                               name="CPA"
+                               th:field="*{CPA}"
+                               class="form-control"
+                               placeholder="Enter Student CPA Mark"
+                               pattern="^([1-9]|10)$"
+                               title="Mark must contain only 1-10 numbers"
+                        />
+                        <br/>
+
+                        <label>Student OS Mark</label>
+                        <input type="text"
+                               id="OS"
+                               name="OS"
+                               th:field="*{OS}"
+                               class="form-control"
+                               placeholder="Enter Student OS Mark"
+                               pattern="^([1-9]|10)$"
+                               title="Mark must contain only 1-10 numbers"
+                        />
+
+                    </div>
+
+                    <style>
+                        #firstName:invalid, #lastName:invalid, #email:invalid, #OOP:invalid, #CPA:invalid, #OS:invalid {
+                            border: 1px solid red;
+                        }
+                    </style>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

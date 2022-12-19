@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap"></i>
+        <strong>AIU</strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-lg-between" id="navbarNav">
+        <ul class="navbar-nav"><a class="navbar-brand" href="#" th:href="@{/}">
+            Registration
+        </a>
+        </ul>
+    </div>
+</nav>
+
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8 mx-auto col col-lg-6">
+
+            <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    You have successfully registered!
+                </div>
+            </div>
+
+            <h1 style="font-family: Impact">Registration</h1>
+
+            <form th:action="@{/registration}" method="post" th:object="${user}">
+
+                <div class="form-group">
+                    <label class="control-label " for="firstName">
+                        First Name
+                    </label>
+                    <input title="The first name must contain only letters with the first capital letter (2 and more)"
+                           id="firstName" class="form-control"
+                           pattern="^([A-Z]{1}[a-z]{1,20})$" th:field="*{firstName}" required autofocus="autofocus"
+                           placeholder="Enter First Name"/>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label" for="lastName">
+                        Last Name
+                    </label>
+                    <input title="The last name must contain only letters with the first capital letter (2 and more)"
+                           id="lastName" class="form-control" th:field="*{lastName}" pattern="^([A-Z]{1}[a-z]{1,20})$"
+                           required autofocus="autofocus" placeholder="Enter Last Name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="email">
+                        Email
+                    </label>
+                    <input title="Email must be in the correct format" id="email" class="form-control"
+                           pattern="^([a-z0-9_-]+\)*[a-z0-9_-]+(\[a-z0-9_-]+)*\[a-z]{2,6}$"
+                           th:field="*{email}" required autofocus="autofocus" placeholder="Enter Email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">
+                        Password
+                    </label>
+                    <input title="Password must contain both case letters and numbers (6 and more)" id="password"
+                           class="form-control" type="password" pattern="^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}$"
+                           th:field="*{password}" required autofocus="autofocus" placeholder="Enter Password"/>
+                </div>
+
+                <style>
+                    #firstName:invalid, #lastName:invalid, #email:invalid, #password:invalid {
+                        border: 1px solid red;
+                    }
+                </style>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <span>
+                            Already registered?
+                            <a style="color: dodgerblue !important; font-size: 15px" href="/" th:href="@{/login}">
+                               Login here
+                            </a>
+                        </span>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

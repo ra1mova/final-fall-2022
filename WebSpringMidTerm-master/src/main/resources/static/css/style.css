@@ -1,0 +1,13 @@
+.navbar {
+    background: dodgerblue;
+}
+a {
+    color: white !important;
+}
+a:hover{
+    color: lightgrey !important;
+}
+a {
+    font-size: 20px;
+}
+
