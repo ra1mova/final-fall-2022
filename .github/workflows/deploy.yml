@@ -22,4 +22,4 @@ jobs:
         environment_name: Javafinal-env
         version_label: java-final-source-${env.GITHUB_RUN_ID}
         region: us-east-1
-        deployment_package: ~/out/artifacts/WebMidSpring_jar/WebMidSpring.jar
+        deployment_package: /out/artifacts/WebMidSpring_jar/WebMidSpring.jar
