@@ -20,6 +20,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: java-final
         environment_name: Javafinal-env
-        version_label: java-final-source
+        version_label: java-final-source-${env.GITHUB_RUN_ID}
         region: us-east-1
         deployment_package: out/artifacts/WebMidSpring.jar
