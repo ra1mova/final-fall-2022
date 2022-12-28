@@ -23,4 +23,4 @@ jobs:
         environment_name: Javafinal-env
         version_label: java-final-source-${env.GITHUB_RUN_ID}
         region: us-east-1
-        deployment_package: /WebSpringMidTerm-master/mvn/wrapper/maven-wrapper.jar
+        deployment_package: C:\Users\User\OneDrive\Documents\Downloads\WebSpringMidTerm-master\WebSpringMidTerm-master\.mvn\wrapper\maven-wrapper.jar
